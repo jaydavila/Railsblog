@@ -18,6 +18,12 @@ def show
   @comment = Comment.find_by_id(params[:id])
 end
 
+def destroy
+  @comment = Comment.find(params[:id])
+  @comment.destroy
+  redirect_to comments_path
+end
+
 private
 
   def comment_params

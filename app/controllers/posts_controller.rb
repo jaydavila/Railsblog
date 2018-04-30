@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	def index	
+	def index
 		@posts = Post.all.last(10).sort_by { |r| r.id }.reverse
 		@post = Post.find_by_id(params[:id])
 	end
@@ -11,12 +11,13 @@ class PostsController < ApplicationController
   end
 
   def new
+		@post = Post.new
   end
 
   def create
  	user = User.find_by_id(session[:user_id])
   post = user.posts.new(post_params)
-	  if post.save && user.save
+	  if post.save && user.
 	    redirect_to post_path(post)
 	  else
 	    redirect_to post_path(new)
@@ -34,6 +35,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
+		@post = Post.find(params[:id])
+	  @post.destroy
+	  redirect_to posts_path
   end
 
   private
