@@ -1,0 +1,22 @@
+<div class="home">
+	<% if current_user %>
+		<% @posts.each do |post| %>
+				<div class="front-page-posts">
+					<h3> <%= post.title %> </h3>
+					<a href="/users/<%= post.user.id %>"> <%= post.user.username %> </a>
+					<hr>
+					<p><%= post.content %></p>
+					<br>
+					<a href="/posts/<%= post.id %>"> View </a>
+				</div>
+		<% end %>
+	<% else %>
+			<h2 class="warning">You must login/signup</h2>
+			<a href="/login"><button class="btn btn-default">Login</button></a>
+			<a href="/users/new"><button class="btn btn-default">Signup</button></a>
+	<% end %>
+</div>
+
+
+
+<!-- lists all posts in order of most recent -->

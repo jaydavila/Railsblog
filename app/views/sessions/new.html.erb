@@ -1,0 +1,9 @@
+<div class="login">
+	<%= bootstrap_form_for :session do |f| %>
+		<%= f.text_field :username %>
+	<br>
+		<%= f.password_field :password %>
+	<br>
+		<%= f.submit "Login" %>
+	<% end %>
+</div>
